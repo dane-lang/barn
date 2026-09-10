@@ -1,5 +1,9 @@
 # changelog
 
+## v2.2 — 2026-09-10
+
+- A-1 OPENINGS legend de-filled — white card removed; text sits directly on the sheet in Manrope, hairline border retained. gen.py + v2.html.
+
 ## v2.1 — 2026-09-10
 
 A-7 materials only; drawings and dimensions unchanged.

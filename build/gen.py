@@ -195,7 +195,7 @@ def a1():
         'B · 36" man door — FRONT endwall, OUTSWING, 12" fr corner (2x jambs)',
         'C · 36" man door — REAR endwall, OUTSWING (geom = B mirrored, 2x jambs)',
         ('B/C hinges face OUTSIDE — NRP pins · stainless/coated hardware', 700, INK),
-        ("D · FUTURE 10'×9' roll-up — RO framed & sided over (rear, ctr)", 700, BLUE)], size=10, lh=15))
+        ("D · FUTURE 10'×9' roll-up — RO framed & sided over (rear, ctr)", 700, BLUE)], fill='none', size=10, lh=15))
     # legend
     lx, ly = Xr + 112, oy
     o.append(rect(lx, ly, 150, 232, '#fff', RULE)); o.append(T(lx + 14, ly + 22, 'LEGEND', 12, 700))
