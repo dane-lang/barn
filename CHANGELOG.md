@@ -1,5 +1,13 @@
 # changelog
 
+## v2.1 — 2026-09-10
+
+A-7 materials only; drawings and dimensions unchanged.
+
+- Girts, purlins, and the treated 2x10 splash plank re-spec'd in **12' stock** (was 16'). On 10'-0" bays both lengths cover a 40' run with equal total footage — the switch buys the same lumber in cheaper, lighter sticks with no added waste. Continuous lap-and-stagger over the posts/trusses is unaffected.
+- Estimated counts recomputed: girts 39 → **52**, purlins 34 → **45**, splash 8 → **10**. Total LF essentially flat (girts 624=624, purlins 540≈544, splash 120 vs 128).
+- Top plate and 1x6 fascia left at 16' — same continuous-run case; flagged for a later call on single-stock-length consistency.
+
 ## v2 — 2026-09-10
 
 Rebuild of sheets A-1 to A-6 as generated SVG; A-7 added. Baseline `index.html` untouched.
