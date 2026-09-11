@@ -1,5 +1,16 @@
 # changelog
 
+## v3 — 2026-09-11
+
+Rebrand + genericize. Published as `v3.html`; `v2.html` is now a redirect to it, so the existing URL keeps working and forwards to current. Baseline `index.html` untouched.
+
+- **Palette** swapped to cream `#FFFBBF` canvas, charcoal `#333333` linework, navy `#1B2A47` structure, oxblood `#7A1220` primary/alerts, pine `#0B5E3A` secondary/future, brown `#3D2314` grounding. Two-accent rule (oxblood acts, pine defers). See `barn-brand-basics.md`.
+- **Fonts** trimmed to Manrope/Poppins at 200/300/400 only; hierarchy now by size + navy, not weight.
+- **Genericized** for a private, location-agnostic set: location dropped from all sheets; job name -> "CUSTOMER"; truss manufacturer/MiTek/model codes, connector brand + part numbers, panel supplier, and door brand -> category labels; finish colors -> `[roof color]` / `[siding color]` / `[door color]`; internal brand comment removed.
+- **A-6** proprietary connector illustration replaced with a generic truss-to-post tie schematic + "install per manufacturer IFU."
+- **Two truss reference pages removed** from the published set; cross-references rewritten to "per sealed truss drawings (provided separately)." The PNGs are retained off-repo.
+- **Build** simplified: no external images, no PIL/`sheets/` dependency; `build.py` regenerates `v3.html` + `v2.html` from `gen.py` + `gen2.py`.
+
 ## v2.2 — 2026-09-10
 
 - A-1 OPENINGS legend de-filled — white card removed; text sits directly on the sheet in Manrope, hairline border retained. gen.py + v2.html.

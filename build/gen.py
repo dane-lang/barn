@@ -1,6 +1,6 @@
 """
 barn drawing-set generator — v2
-Emits v2.html: six SVG sheets (A-1..A-6) + A-7 materials list + two Kilby truss reference PNGs.
+Emits v2.html: six SVG sheets (A-1..A-6) + A-7 materials list + two the truss mfr truss reference PNGs.
 Every dimension is derived from the SPEC block below. Change a number there, re-run, re-push.
 """
 import base64, os, html as H
@@ -16,7 +16,7 @@ S = dict(
     CEIL_TARGET=12.0,          # cut-to target AFG, ft = bottom of truss
     CEIL_MIN=11.0,             # absolute minimum, ft
     PITCH=6, SPAN=20.0,        # 6:12 on 20' span
-    RISE=6.5,                  # ft eave->ridge incl. heel (per Kilby T02)
+    RISE=6.5,                  # ft eave->ridge incl. heel (per the truss mfr T02)
     EAVE_OH=2.0,               # ft
     GIRT_OC=2.0,               # ft
     HOLE_IN=18, PAD='precast',
@@ -33,7 +33,7 @@ S['SILL_AFG'] = 10.0
 
 ACC = '#1470AF'; INK = '#222'; NAVY = '#2b3f74'; TAN = '#c9a97a'; TAN2 = '#e6d6b8'
 STONE = '#e3dccd'; GRAY = '#8a8a8a'; LITE = '#f4f6f8'; RULE = '#dde3e8'; BLUE = ACC
-SRED = '#FF0000'   # Siloa red — only red authored on siloafacility.com
+SRED = '#FF0000'   # alert / not-for-permit accent
 SHW, SHH = 1340, 820
 
 def ft(v):
@@ -191,11 +191,11 @@ def a1():
     o.append(T(cx, Yb + 90, "light columns (fan centered at 20'-0\")", 9, 400, GRAY, 'middle'))
     # openings box
     o.append(note_box(ox + 12, oy + 8, 400, 107, 'OPENINGS', [
-        "A · 10'×9' Janus roll-up — RO 10'-0\"w, 2 jamb posts @ 10'-5½\" o.c.",
+        "A · 10'×9' roll-up door — RO 10'-0\"w, 2 jamb posts @ 10'-5½\" o.c.",
         'B · 36" man door — FRONT endwall, OUTSWING, 12" fr corner (2x jambs)',
         'C · 36" man door — REAR endwall, OUTSWING (geom = B mirrored, 2x jambs)',
         ('B/C hinges face OUTSIDE — NRP pins · stainless/coated hardware', 700, INK),
-        ("D · FUTURE 10'×9' roll-up — RO framed & sided over (rear, ctr)", 700, BLUE)], fill='none', size=10, lh=15))
+        ("D · FUTURE 10'×9' roll-up — RO framed & sided over (rear, ctr)", 700, BLUE)], size=10, lh=15))
     # legend
     lx, ly = Xr + 112, oy
     o.append(rect(lx, ly, 150, 232, '#fff', RULE)); o.append(T(lx + 14, ly + 22, 'LEGEND', 12, 700))
@@ -220,7 +220,7 @@ def a1():
         "SIDEWALL A (bottom): continuous screened vent slot in top 2' of wall above · S3 at each man door · man doors framed with 2x jamb studs",
         "FRONT ENDWALL = left · BACK ENDWALL = right · posts 10'-0\" o.c. outside-face-to-outside-face · 4 roll-up jamb posts circled (front installed, rear future)"]):
         o.append(T(cx, ny + i * 17, s_, 9.5, 400, GRAY if i else INK, 'middle'))
-    return sheet('A-1', 'Floor Plan', 'FLOOR PLAN & ELECTRICAL · Mountain City, TN', ''.join(o),
+    return sheet('A-1', 'Floor Plan', 'FLOOR PLAN & ELECTRICAL', ''.join(o),
                  'SCHEMATIC — NOT FOR PERMIT · DIMENSIONS GOVERN, DO NOT SCALE', '1 of 7')
 
 # ───────────────────────── A-2 FOUNDATION & POST ─────────────────────────
@@ -355,5 +355,5 @@ def a2():
         ('7. Floor: RAISED PAD — 4" clean gravel over graded native clay (no structural fill — dense-bearing site), finished 4"–6" above grade, crowned.', 400, INK),
         ('8. Rear endwall mirrors front — 2 RJ posts + 2x12 header, sided over for future 10×9 roll-up (Floor Plan note D).', 400, INK)],
         size=9.5, lh=18))
-    return sheet('A-2', 'Foundation & Post Layout', 'FOUNDATION & POST LAYOUT · Mountain City, TN', ''.join(o),
-                 'SCHEMATIC — NOT FOR PERMIT · DIMENSIONS GOVERN, DO NOT SCALE · connection & collar sizing per Lyon / Simpson engineering', '2 of 7')
+    return sheet('A-2', 'Foundation & Post Layout', 'FOUNDATION & POST LAYOUT', ''.join(o),
+                 'SCHEMATIC — NOT FOR PERMIT · DIMENSIONS GOVERN, DO NOT SCALE · connection & collar sizing per the project engineer', '2 of 7')

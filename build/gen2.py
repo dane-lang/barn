@@ -59,7 +59,7 @@ def a3():
     # sidewalls
     def side(ox, base_y, title, sub, slot):
         w = S['L'] * sc; x0, x1 = ox, ox + w; ey = base_y - eave * sc; roof_h = S['RISE'] * sc
-        o.append(rect(x0, ey - roof_h, w, roof_h, NAVY, NAVY)); o.append(T(x0 + 30, ey - roof_h + 24, 'Regal Blue roof plane beyond (6:12)', 9, 400, '#dbe8f3'))
+        o.append(rect(x0, ey - roof_h, w, roof_h, NAVY, NAVY)); o.append(T(x0 + 30, ey - roof_h + 24, '[roof color] roof plane beyond (6:12)', 9, 400, '#dbe8f3'))
         o.append(rect(x0, ey, w, eave * sc, STONE, INK, 1))
         if slot:
             o.append(rect(x0, ey, w, 1.5 * sc, '#e8f0f8', '#9db8d6', 1))
@@ -78,16 +78,16 @@ def a3():
     # ceiling note (v2)
     o.append(note_box(920, 80, 400, 110, 'CEILING HEIGHT — v2', [
         (f"Eave = {ft(eave)} = post cut line = bottom of truss (target).", 700, ACC),
-        (f"Actual eave lands {ft(S['CEIL_MIN'])}–{ft(eave)} per the site-set level line", 400, INK), ("(Sheet A-2 note 3). Ridge = eave + " + ft(S['RISE']) + " (6:12 per Kilby T02)", 400, INK),
+        (f"Actual eave lands {ft(S['CEIL_MIN'])}–{ft(eave)} per the site-set level line", 400, INK), ("(Sheet A-2 note 3). Ridge = eave + " + ft(S['RISE']) + " (6:12 per truss mfr (typical))", 400, INK),
         (f"→ {ft(ridge)} at target. Girts, purlins, trusses key off the cut top.", 400, INK)],
         fill='#fff8e1', st='#e6c96a', size=9.5, lh=15, tfill=ACC))
     # finishes
     fx, fy = 920, 206
     o.append(rect(fx, fy, 400, 110, '#fff', RULE)); o.append(T(fx + 14, fy + 22, 'FINISHES', 12, 700))
-    for i, (col, lab) in enumerate([(STONE, 'Walls — Lyon board & batten, Light Stone'), (NAVY, 'Roof, fascia, corner & opening trim — Regal Blue'), ('#eee', 'Soffit — white vented vinyl'), ('#e8f0f8', 'Light slot — clear polycarbonate (screen behind)'), ('#fff', 'Doors — Gloss White')]):
+    for i, (col, lab) in enumerate([(STONE, 'Walls — board & batten, [siding color]'), (NAVY, 'Roof, fascia, corner & opening trim — [roof color]'), ('#eee', 'Soffit — white vented vinyl'), ('#e8f0f8', 'Light slot — clear polycarbonate (screen behind)'), ('#fff', 'Doors — [door color]')]):
         o.append(rect(fx + 14, fy + 32 + i * 15, 14, 10, col, '#999', 0.5)); o.append(T(fx + 36, fy + 41 + i * 15, lab, 9.5))
-    return sheet('A-3', 'Exterior Elevations', 'EXTERIOR ELEVATIONS · Mountain City, TN', ''.join(o),
-                 "SCHEMATIC — NOT FOR PERMIT · DIMENSIONS GOVERN, DO NOT SCALE · 6:12 roof per Kilby T02 · 2'-0\" boxed eave soffits (sidewalls, T02 tails) · rake FLUSH at gable ends", '3 of 7')
+    return sheet('A-3', 'Exterior Elevations', 'EXTERIOR ELEVATIONS', ''.join(o),
+                 "SCHEMATIC — NOT FOR PERMIT · DIMENSIONS GOVERN, DO NOT SCALE · 6:12 roof per truss mfr (typical) · 2'-0\" boxed eave soffits (sidewalls, (typical) tails) · rake FLUSH at gable ends", '3 of 7')
 
 # ───────────────────────── A-4 WALL / GIRT DETAIL ─────────────────────────
 def a4():
@@ -132,11 +132,11 @@ def a4():
         '1. 2x6 girts face-applied to the OUTSIDE face of posts', '    @ 24" o.c. from the top of the splash — wall plane = post face.', '',
         '2. Bottom girt: treated 2x10, retains gravel / slab edge.', '',
         "3. Sill girt at 10'-0\" AFG + top plate at the cut line frame the", '    clear-poly light slot: 24" at 12\' target, ≥12" at 11\' minimum.', '',
-        '4. B&B steel siding over girts; screws @ 24", Light Stone.', '', '5. Base guard + foam closure at panel bottom.', '',
+        '4. B&B steel siding over girts; screws @ 24", [siding color].', '', '5. Base guard + foam closure at panel bottom.', '',
         ('6. v2: girt COUNT is unchanged from baseline (4 field + sill).', 700, ACC), ('    The added wall foot lands as a ~15" gap between the last', 700, ACC),
         ('    field girt and the sill — shorter span, no panel issue.', 700, ACC), ('    Crew may re-space the top run in the field; do not', 700, ACC), ('    exceed 24" between girts anywhere.', 700, ACC)], size=10, lh=15))
     return sheet('A-4', 'Wall / Girt Detail', 'WALL / GIRT DETAIL · members shown by width', ''.join(o),
-                 'MEMBERS BY WIDTH · 1 in = 4 px · NOT FOR PERMIT · connection sizing per Lyon / Simpson', '4 of 7')
+                 'MEMBERS BY WIDTH · 1 in = 4 px · NOT FOR PERMIT · connection sizing per the project engineer', '4 of 7')
 
 # ───────────────────────── A-5 ROOF FRAMING ─────────────────────────
 def a5():
@@ -160,11 +160,11 @@ def a5():
     o.append(T(ox + L * sc / 2, oy + 14, "2'-0\" eave overhang — fascia at edge · closed vented vinyl soffit below, level return to wall", 8.5, 400, GRAY, 'middle'))
     o.append(T(ox + L * sc / 2, oy + tot_w - 6, "2'-0\" eave overhang — fascia at edge · closed vented vinyl soffit below, level return to wall", 8.5, 400, GRAY, 'middle'))
     o.append(T(ox + L * sc / 2, oy + tot_w * 0.32, '2x6 purlins FLAT @ 24" o.c. ON TOP of truss top chords — 5½" face shown, to scale', 9, 400, GRAY, 'middle'))
-    o.append(T(ox + L * sc / 2, oy + tot_w * 0.66, "T02 = FINK · T02GE = GABLE END (blue tags) · 10'-0\" o.c. on 8x8 posts (■) · truss bears on CUT post top", 9, 400, GRAY, 'middle'))
+    o.append(T(ox + L * sc / 2, oy + tot_w * 0.66, "T02 = FINK · (gable-end) = GABLE END (blue tags) · 10'-0\" o.c. on 8x8 posts (■) · truss bears on CUT post top", 9, 400, GRAY, 'middle'))
     for i in range(S['NBAYS']): o.append(dimH(ox + i * S['BAY'] * sc, ox + (i + 1) * S['BAY'] * sc, oy + tot_w + 16, "10'-0\"", size=8))
     o.append(dimH(ox, ox + L * sc, oy + tot_w + 40, ft(L) + ' — roof FLUSH at gable ends (no rake overhang)', size=9))
     o.append(dimV(oy + oh * sc, oy + tot_w - oh * sc, ox + L * sc + 44, ft(W) + ' span', left=False, size=9))
-    o.append(T(ox + L * sc + 50, oy + tot_w / 2 + 16, "24'-0\" o-o eaves · 2'-0\" tails per T02", 8, 400, GRAY))
+    o.append(T(ox + L * sc + 50, oy + tot_w / 2 + 16, "24'-0\" o-o eaves · 2'-0\" tails per (typical)", 8, 400, GRAY))
     # truss thumbs — simple line fink to scale
     def truss(x, y, w, gable):
         h = S['RISE'] / S['SPAN'] * w * 0.85
@@ -176,49 +176,58 @@ def a5():
         else:
             b1 = bx + (ex - bx) / 3; b2 = ex - (ex - bx) / 3; t1x = bx + (ex - bx) / 4; t2x = ex - (ex - bx) / 4; ty = by - h / 2
             o.append(f'<path d="M{t1x} {ty} L{b1} {by} L{ax} {ay} L{b2} {by} L{t2x} {ty}" stroke="{GRAY}" stroke-width="1.5" fill="none"/>')
-        o.append(T(bx, by + 18, "Kilby Truss, Inc. · MiTek · job DANE GROVE · 6:12 · 20' span · 2'-0\" tails · see REF sheets", 8, 400, GRAY))
+        o.append(T(bx, by + 18, "engineered truss · job CUSTOMER · 6:12 · 20' span · 2'-0\" tails · per manufacturer\'s sealed drawings (provided separately)", 8, 400, GRAY))
     truss(60, 560, 420, False); truss(560, 560, 420, True)
     o.append(note_box(1040, 530, 280, 240, 'ROOF NOTES', [
-        '1. Trusses per Kilby/MiTek T02 & T02GE:', "   6:12, 20' span, 2'-0\" tails — 24' o-o", '   eaves. Truss sheets govern.', '',
+        '1. Trusses per the truss manufacturer\'s sealed drawings:', "   6:12, 20' span, 2'-0\" tails — 24' o-o", '   eaves. Manufacturer\'s sealed truss drawings govern.', '',
         '2. 2x6 purlins FLAT @ 24" o.c. — wide face', '   bearing on top chords (like girts on posts).', '',
         '3. 26-ga AG panel over purlins; factory', '   anti-condensation felt on underside.', '',
         '4. Truss-to-post & purlin-to-truss', '   connections: see Sheet A-6.', '',
-        "5. T02GE gable studs @ 2'-0\" o.c.; rake", '   FLUSH — no outlookers, rake trim only.'], size=9.5, lh=13))
-    return sheet('A-5', 'Roof Framing', 'ROOF FRAMING · Mountain City, TN', ''.join(o),
-                 'DRAWN TO ONE SCALE · NOT FOR PERMIT · trusses per Kilby Truss / MiTek T02 & T02GE', '5 of 7')
+        "5. (gable-end) gable studs @ 2'-0\" o.c.; rake", '   FLUSH — no outlookers, rake trim only.'], size=9.5, lh=13))
+    return sheet('A-5', 'Roof Framing', 'ROOF FRAMING', ''.join(o),
+                 'DRAWN TO ONE SCALE · NOT FOR PERMIT · trusses per the truss manufacturer\'s sealed drawings', '5 of 7')
 
 # ───────────────────────── A-6 CONNECTION DETAILS ─────────────────────────
-def a6(h10s_b64):
+def a6():
     o = []
-    # H10S image panel (Simpson catalog reference carried from baseline)
-    o.append(rect(20, 68, 540, 700, '#fff', RULE)); o.append(rect(20, 68, 540, 30, ACC, ACC)); o.append(T(34, 88, 'TRUSS-TO-POST TIE — Simpson Strong-Tie H10S', 12, 700, '#fff'))
-    o.append(f'<image href="data:image/png;base64,{h10s_b64}" x="60" y="110" width="460" height="560" preserveAspectRatio="xMidYMid meet"/>')
-    o.append(T(290, 690, 'Illustration: Simpson Strong-Tie', 8.5, 400, GRAY, 'middle'))
-    o.append(rect(20, 706, 540, 60, '#f4f6f8', 'none')); o.append(T(34, 728, 'Shown: Simpson catalog condition (stud wall).', 9, 400, GRAY)); o.append(T(34, 744, 'This build: truss bears directly on the CUT 8x8 post top — same tie, same fastening, no wall plates.', 9, 700, INK))
-    o.append(T(34, 758, 'v2: 8x8 face is wider than the 6x6 the tie pattern was reviewed against — confirm pattern / screw length with Lyon / Simpson.', 8.5, 700, ACC))
+    # generic truss-to-post tie schematic (no proprietary artwork)
+    o.append(rect(20, 68, 540, 700, '#fff', RULE)); o.append(rect(20, 68, 540, 30, ACC, ACC)); o.append(T(34, 88, 'TRUSS-TO-POST TIE — schematic', 12, 700, '#fff'))
+    # 8x8 post (cut top) + truss bottom chord bearing on it
+    o.append(rect(250, 300, 90, 380, '#f4f6f8', INK, 2)); o.append(T(295, 660, '8x8 post', 10, 700, INK, 'middle')); o.append(T(295, 675, '(cut level top)', 9, 400, GRAY, 'middle'))
+    o.append(rect(120, 250, 350, 52, '#f4f6f8', INK, 2)); o.append(T(180, 240, 'truss bottom chord', 10, 700, INK))
+    # metal tie strap over the joint, both legs
+    o.append(rect(236, 246, 20, 130, 'none', ACC, 2)); o.append(rect(236, 246, 120, 20, 'none', ACC, 2))
+    o.append(T(360, 262, 'truss-to-post tie', 10, 700, ACC))
+    # fastener holes: into chord + into post
+    for fx,fy in [(268,260),(300,260),(332,260),(268,278),(300,278),(332,278),  # into chord (top leg)
+                  (243,320),(243,344),(243,368),(243,392),(243,416),(243,440)]: # into post (vertical leg)
+        o.append(f'<circle cx="{fx}" cy="{fy}" r="3.2" fill="{INK}"/>')
+    o.append(rect(20, 706, 540, 60, '#f4f6f8', 'none')); o.append(T(34, 728, 'Truss bears directly on the CUT 8x8 post top — one tie each bearing, no wall plates.', 9, 700, INK))
+    o.append(T(34, 744, 'Select the tie for the 8x8 post face; fill every listed hole. Install per the connector manufacturer\'s IFU.', 9, 400, GRAY))
+    o.append(T(34, 758, 'Confirm tie model, hole pattern, and screw length with the connector manufacturer / project engineer.', 8.5, 700, ACC))
     # rule + other connections
-    o.append(note_box(580, 68, 340, 400, 'H10S RULE', [
-        '• One H10S per truss, each bearing — 8 trusses,', '  both ends. No HGA. No notching.', '',
+    o.append(note_box(580, 68, 340, 400, 'TIE RULE', [
+        '• One tie per truss, each bearing — 8 trusses,', '  both ends. No HGA. No notching.', '',
         '• REQUIRED: 8 fasteners into the truss chord', '  + 8 into the post.', '',
         '• FULL PATTERN: fill every hole — up to 16 in', '  the post where fasteners clear.', '',
-        '• All fasteners: Simpson SD9112', '  (SD Connector #9 × 1½"). No nails.', '',
+        '• All fasteners: #9 × 1½" structural screw', '  (SD Connector #9 × 1½"). No nails.', '',
         '• Install tie flat — no bending, no field', '  modification of the connector.', '',
         '• Same tie, same pattern at the future rear', '  roll-up jamb trusses.'], size=10, lh=14))
     o.append(note_box(580, 488, 340, 280, 'OTHER CONNECTIONS', [
-        ('PURLIN TO TRUSS', 700, ACC), '2 SD9112 toe-driven per bearing, opposing', 'angles. H1 clip if Lyon pkg requires.', '',
-        ('GIRT TO POST', 700, ACC), '2 SD9112 per post, staggered. Girts land', 'flush on exterior post face, 24" o.c.', '',
-        ('SPLASH BOARD TO POST', 700, ACC), 'Treated 2x10: 3 SD9112 per post.', '',
-        ('HEADER TO JAMB POST', 700, ACC), '8x8 + 2x12 header: SDWS22600 timber', 'screws down into jamb-post end. Both roll-ups.'], size=10, lh=14))
+        ('PURLIN TO TRUSS', 700, ACC), '2 screws toe-driven per bearing, opposing', 'angles. H1 clip if the connector package requires.', '',
+        ('GIRT TO POST', 700, ACC), '2 screws per post, staggered. Girts land', 'flush on exterior post face, 24" o.c.', '',
+        ('SPLASH BOARD TO POST', 700, ACC), 'Treated 2x10: 3 screws per post.', '',
+        ('HEADER TO JAMB POST', 700, ACC), '8x8 + 2x12 header: 6" structural timber', 'screws down into jamb-post end. Both roll-ups.'], size=10, lh=14))
     o.append(note_box(940, 68, 380, 400, 'INSTALL SEQUENCE', [
         '1  Cut all post tops to the level line (A-2 note 3).', '2  Set truss on post; center bearing, crown up.', '3  Tack truss plumb; brace before tying.',
-        '4  Place H10S on post face, tight to chord.', '5  Drive 8 SD9112 into the truss chord.', '6  Drive 8 (up to 16) SD9112 into the post.',
+        '4  Place tie on post face, tight to chord.', '5  Drive 8 screws into the truss chord.', '6  Drive 8 (up to 16) screws into the post.',
         '7  Repeat both bearings, all 8 trusses.', '8  Inspect: every listed hole filled, screws', '   flush, no shiners.'], size=10, lh=22))
     o.append(note_box(940, 488, 380, 280, 'JOB-SITE NOTES', [
-        '• Buy H10S in the 8-pack carton (16 needed', '  + 2 spares).', '• SD9112: ~400 screws — one 3-lb box covers', '  ties + girt schedule margin.',
+        '• Buy tie in the 8-pack carton (16 needed', '  + 2 spares).', '• screws: ~400 screws — one 3-lb box covers', '  ties + girt schedule margin.',
         '• Drive with #2 square/hex bit, impact driver,', '  clutch set to seat — do not overdrive.', '• Ties are G90 galvanized — fine over', '  treated 8x8 in this dry-service barn.',
-        '• Do not substitute drywall or deck screws.', '', 'Simpson p/n: H10S · SD9112 · SDWS22600'], fill='#fff8e1', st='#e6c96a', size=10, lh=14))
-    return sheet('A-6', 'Connection Details', 'CONNECTION DETAILS · Mountain City, TN', ''.join(o),
-                 'NOT FOR PERMIT · connector capacities per Simpson Strong-Tie current catalog · verify hole fill & screw length at install', '6 of 7')
+        '• Do not substitute drywall or deck screws.', '', 'Fasteners: truss-to-post tie · #9×1½" screw · 6" timber screw'], fill='#fff8e1', st='#e6c96a', size=10, lh=14))
+    return sheet('A-6', 'Connection Details', 'CONNECTION DETAILS', ''.join(o),
+                 'NOT FOR PERMIT · connector capacities per manufacturer\'s current catalog · verify hole fill & screw length at install', '6 of 7')
 
 # ───────────────────────── A-7 MATERIALS LIST (new) ─────────────────────────
 def materials():
@@ -245,33 +254,33 @@ def materials():
           ('2x6 jamb studs', '12\'', 8, 'ea', 'man doors, 2 per side'),
           ('1x6 fascia', '16\'', 8, 'ea', 'sidewall eaves 2 × 40\' + rake')]),
         ('ROOF',
-         [('Kilby T02 fink truss', "6:12 · 20' span · 2' tails", 3, 'ea', 'T2 T3 T4'),
-          ('Kilby T02GE gable-end truss', "6:12 · 20' span · 2' tails", 2, 'ea', 'T1 T5'),
+         [('truss mfr (typical) fink truss', "6:12 · 20' span · 2' tails", 3, 'ea', 'T2 T3 T4'),
+          ('truss mfr (gable-end) gable-end truss', "6:12 · 20' span · 2' tails", 2, 'ea', 'T1 T5'),
           ('2x6 purlins', '12\' · flat @ 24" o.c.', int(purlin_lf / 12) + 2, 'ea', f"~{purlin_lf:.0f} LF"),
           ('2x6 gable studs', '12\' @ 24" o.c.', 20, 'ea', 'both gable ends'),
-          ('26-ga AG roof panel', 'Regal Blue · anti-condensation felt', int(roof_area * 1.1), 'sq ft', f"~{roof_area:.0f} sf + 10% waste"),
-          ('Ridge cap', 'Regal Blue', 44, 'LF', '40\' + laps'),
-          ('Eave / drip trim', 'Regal Blue', 88, 'LF', '2 × 40\' + laps'),
-          ('Rake trim', 'Regal Blue · flush rake', 50, 'LF', '4 rakes × ~12\''),
+          ('26-ga AG roof panel', '[roof color] · anti-condensation felt', int(roof_area * 1.1), 'sq ft', f"~{roof_area:.0f} sf + 10% waste"),
+          ('Ridge cap', '[roof color]', 44, 'LF', '40\' + laps'),
+          ('Eave / drip trim', '[roof color]', 88, 'LF', '2 × 40\' + laps'),
+          ('Rake trim', '[roof color] · flush rake', 50, 'LF', '4 rakes × ~12\''),
           ('Vented vinyl soffit', 'white · 2\' boxed eaves', 170, 'sq ft', '2 × 40\' × 2\' + returns'),
           ('Foam closures, roof', 'panel profile', 90, 'LF', 'eave + ridge')]),
         ('SIDING & TRIM',
-         [('Lyon board & batten steel panel', 'Light Stone · 12\' & 13\' lengths', int(wall_area * 1.1), 'sq ft', f"~{wall_area:.0f} sf + 10% waste"),
-          ('Corner trim', 'Regal Blue', 52, 'LF', '4 corners × 12\'+'),
-          ('J / opening trim', 'Regal Blue · roll-ups + man doors', 90, 'LF', 'buy future roll-up trim NOW'),
+         [('board & batten steel panel', '[siding color] · 12\' & 13\' lengths', int(wall_area * 1.1), 'sq ft', f"~{wall_area:.0f} sf + 10% waste"),
+          ('Corner trim', '[roof color]', 52, 'LF', '4 corners × 12\'+'),
+          ('J / opening trim', '[roof color] · roll-ups + man doors', 90, 'LF', 'buy future roll-up trim NOW'),
           ('Base guard / foam closure, wall', 'panel profile', 120, 'LF', 'perimeter'),
           ('Clear polycarbonate light-slot panel', '~18" × 40\'', 60, 'sq ft', 'sidewall A top 2\''),
           ('Insect screen, light slot', 'behind poly', 60, 'sq ft', '')]),
         ('DOORS',
-         [("10'×9' Janus roll-up", 'Gloss White', 1, 'ea', 'front, installed now'),
-          ('36" steel man door, prehung', 'Gloss White · OUTSWING · NRP hinges', 1, 'ea', 'front endwall (B)'),
-          ('36" steel man door, prehung', 'Gloss White · OUTSWING · NRP hinges', 1, 'ea', 'rear endwall (C)')]),
+         [("10'×9' roll-up door", '[door color]', 1, 'ea', 'front, installed now'),
+          ('36" steel man door, prehung', '[door color] · OUTSWING · NRP hinges', 1, 'ea', 'front endwall (B)'),
+          ('36" steel man door, prehung', '[door color] · OUTSWING · NRP hinges', 1, 'ea', 'rear endwall (C)')]),
         ('CONNECTORS & FASTENERS',
-         [('Simpson H10S truss tie', 'G90', 18, 'ea', '16 + 2 spares'),
-          ('Simpson SD9112 screw', '#9 × 1½"', 400, 'ea', '1 × 3-lb box — ties + girts'),
-          ('Simpson SDWS22600 timber screw', '6"', 24, 'ea', 'headers to jamb posts'),
-          ('Panel screws, siding', '#12 × 1½" color-match, Light Stone', 1200, 'ea', '~1 per sf / 24" pattern'),
-          ('Panel screws, roof', '#12 × 1½" color-match, Regal Blue', 1100, 'ea', ''),
+         [(' tie truss tie', 'G90', 18, 'ea', '16 + 2 spares'),
+          ('#9 × 1½" structural screw screw', '#9 × 1½"', 400, 'ea', '1 × 3-lb box — ties + girts'),
+          (' 6" structural timber screw', '6"', 24, 'ea', 'headers to jamb posts'),
+          ('Panel screws, siding', '#12 × 1½" color-match, [siding color]', 1200, 'ea', '~1 per sf / 24" pattern'),
+          ('Panel screws, roof', '#12 × 1½" color-match, [roof color]', 1100, 'ea', ''),
           ('Stitch screws', '¼" lap', 200, 'ea', 'trim + laps')]),
         ('FLOOR',
          [('Compacted structural fill', 'to raise pad', 20, 'cy', '800 sf × ~6"; confirm on site'),
@@ -296,5 +305,5 @@ def a7():
             y += 4
     render(24, rows[:3]); render(24 + colw + gap, rows[3:])
     o.append(T(24 + colw + gap, 700, 'Electrical, fixtures, and interior fit-out are a later stage — not listed.', 9, 400, GRAY))
-    return sheet('A-7', 'Materials List', 'DRY-IN MATERIALS LIST · estimated quantities · Mountain City, TN', ''.join(o),
+    return sheet('A-7', 'Materials List', 'DRY-IN MATERIALS LIST · estimated quantities', ''.join(o),
                  'ESTIMATES — verify every quantity with supplier take-off before ordering · buy future roll-up trim + fasteners now', '7 of 7')
